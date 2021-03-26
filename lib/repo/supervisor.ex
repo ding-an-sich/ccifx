@@ -9,7 +9,8 @@ defmodule Ccifx.Repository.Supervisor do
     children = [
       %{
         id: Ccifx.Repository,
-        start: {Ccifx.Repository, :start_link, [%{}]}}
+        start: {Ccifx.Repository, :start_link, [%{}]}
+      }
     ]
 
     Supervisor.init(children, strategy: :one_for_one)
