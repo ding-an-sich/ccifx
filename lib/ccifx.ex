@@ -13,8 +13,10 @@ defmodule Ccifx do
     Ccifx.Repository.Supervisor.start_link([])
   end
 
-  def crypt(phrase, key, mode) when is_binary(phrase) and is_integer(key), do: do_crypt(phrase, key, mode)
-  def crypt(_phrase, _key, _mode), do: raise ArgumentError
+  def crypt(phrase, key, mode) when is_binary(phrase) and is_integer(key),
+    do: do_crypt(phrase, key, mode)
+
+  def crypt(_phrase, _key, _mode), do: raise(ArgumentError)
 
   defp do_crypt(phrase, key, :left) do
     phrase
@@ -39,6 +41,7 @@ defmodule Ccifx do
   def decrypt(mode) when mode in @implemented_modes do
     {key, message} = Repository.retrieve(mode)
     graphs = String.graphemes(message)
+
     case mode do
       :left -> Ciphers.right(graphs, key)
       :right -> Ciphers.left(graphs, key)
