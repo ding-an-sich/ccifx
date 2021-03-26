@@ -1,21 +1,36 @@
 # Ccifx
 
-**TODO: Add description**
+A Caesar's Cipher implementation and repository.
 
-## Installation
+## Using the cipher
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `ccifx` to your list of dependencies in `mix.exs`:
+To encrypt messages, call Ccfix.crypt passing a phrase, a key and a cryptographic mode.
 
 ```elixir
-def deps do
-  [
-    {:ccifx, "~> 0.1.0"}
-  ]
-end
+iex> Ccfix.crypt("MY SHARONA", 3, :left)
+=> :ok
+```
+To decrypt the last message using the repository, call Ccfix.decrypt passing a cyptographic mode.
+
+```elixir
+iex> Ccfix.decrypt(:left)
+=> "MY SHARONA"
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/ccifx](https://hexdocs.pm/ccifx).
+## The repository
 
+The repository holds the last call to each cryptographic mode. It stores the encrypted text and the key.
+
+```elixir
+iex> Ccfix.crypt("MY SHARONA", 3, :right)
+=> :ok
+iex> Ccifx.Repository.retrieve(:right)
+=> {3, "PB VKDURQD"}
+```
+
+## TO-DO
+- Specs
+- Documentation
+- Tests
+- Let users decrypt any message
+- Implement :zigzag
