@@ -4,16 +4,16 @@ A Caesar's Cipher implementation and repository.
 
 ## Using the cipher
 
-To encrypt messages, call Ccfix.crypt passing a phrase, a key and a cryptographic mode.
+To encrypt messages, call Ccifx.crypt passing a phrase, a key and a cryptographic mode.
 
 ```elixir
-iex> Ccfix.crypt("MY SHARONA", 3, :left)
+iex> Ccifx.crypt("MY SHARONA", 3, :left)
 => :ok
 ```
-To decrypt the last message using the repository, call Ccfix.decrypt passing a cyptographic mode.
+To decrypt the last message using the repository, call Ccifx.decrypt passing a cyptographic mode.
 
 ```elixir
-iex> Ccfix.decrypt(:left)
+iex> Ccifx.decrypt(:left)
 => "MY SHARONA"
 ```
 
@@ -22,7 +22,7 @@ iex> Ccfix.decrypt(:left)
 The repository holds the last call to each cryptographic mode. It stores the encrypted text and the key.
 
 ```elixir
-iex> Ccfix.crypt("MY SHARONA", 3, :right)
+iex> Ccifx.crypt("MY SHARONA", 3, :right)
 => :ok
 iex> Ccifx.Repository.retrieve(:right)
 => {3, "PB VKDURQD"}
